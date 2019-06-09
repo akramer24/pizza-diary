@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
     "firebase": "^6.1.1",
     "less": "^3.9.0",
     "less-watch-compiler": "^1.13.0",

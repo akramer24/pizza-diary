@@ -1,0 +1,36 @@
+.input-container {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 16px;
+  height: 32px;
+  position: relative;
+}
+
+.input {
+  flex-grow: 1;
+  border-radius: 15px;
+  border: 1px solid blue;
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+.input:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 10px 1px blue;
+}
+
+.input-field-error {
+  border: 1px solid red;
+}
+
+.input-error {
+  position: absolute;
+  margin: 0;
+  top: 32px;
+  padding-left: 12px;
+  width: 100%;
+  font-size: 10px;
+  color: red;
+  z-index: 5;
+}
