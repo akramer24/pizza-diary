@@ -16,6 +16,7 @@
     "build": "yarn build-css && react-scripts build",
     "build-css": "lessc src/index.less src/index.css",
     "watch-css": "less-watch-compiler src src index.less",
+    "deploy": "yarn build && firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

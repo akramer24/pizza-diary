@@ -8,8 +8,9 @@ const Home = ({ firebase }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    firebase.getAuthStateChanged(async user => {
-      await setUser(user);
+    firebase.getAuthStateChanged(async currentUser => {
+      const userData = await firebase.getUserFromDb(currentUser.uid);
+      await setUser(userData);
       setLoading(false);
     });
   });
@@ -22,7 +23,16 @@ const Home = ({ firebase }) => {
           loading
             ? <div className="loading-image-container"><img className="loading-image" src={pizzaMan} /></div>
             : user
-              ? <span>Welcome, {user.displayName}</span>
+              ? (
+                <div id="home-user">
+                  <span id="home-user-welcome">Welcome, {user.displayName}</span>
+                  <div id="home-user-stats">
+                    <span>Quick stats</span>
+                    <span>Visited: {user.pizzeriasVisited.length}</span>
+                    <span>On the list: {user.pizzeriasToVisit.length}</span>
+                  </div>
+                </div>
+              )
               : <Auth />
         }
       </div>

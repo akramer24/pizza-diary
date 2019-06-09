@@ -1,22 +1,35 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 import { firebaseConfig } from '../../secrets';
 
 class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
+    this.db = app.firestore();
   }
 
   getCurrentUser = () => this.auth.currentUser;
+
+  getUserFromDb = async uid => {
+    const doc = await this.db.collection('users').doc(uid).get();
+    return doc.data();
+  }
 
   getAuthStateChanged = cb =>
     this.auth.onAuthStateChanged(cb);
 
   doSignUp = async (email, password, username) => {
     try {
-      await this.auth.createUserWithEmailAndPassword(email, password);
-      this.getAuthStateChanged(user => user.updateProfile({ displayName: username }));
+      const { user } = await this.auth.createUserWithEmailAndPassword(email, password);
+      await user.updateProfile({ displayName: username });
+      this.db.collection('users').doc(user.uid).set({
+        displayName: user.displayName,
+        email: user.email,
+        pizzeriasVisited: [],
+        pizzeriasToVisit: []
+      })
     } catch (err) {
       console.log(err);
     }

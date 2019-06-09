@@ -12,7 +12,6 @@ const Auth = ({ firebase }) => {
       isSignUp
         ? await firebase.doSignUp(email, password, username)
         : await firebase.doSignInWithEmailAndPassword(email, password);
-      console.log(firebase.auth.currentUser)
     } catch (err) {
       setError(err.message);
     }
