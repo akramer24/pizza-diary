@@ -21,7 +21,7 @@ const Home = ({ firebase }) => {
       <div id="home-bottom">
         {
           loading
-            ? <div className="loading-image-container"><img className="loading-image" src={pizzaMan} /></div>
+            ? <div className="loading-image-container"><img className="loading-image" src={pizzaMan} alt="pizza-man" /></div>
             : user
               ? (
                 <div id="home-user">

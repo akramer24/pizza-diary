@@ -2,6 +2,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { firebaseConfig } from '../../secrets';
+import getTheClassics from '../../yelp/getTheClassics';
 
 class Firebase {
   constructor() {
@@ -44,6 +45,10 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
+
+  seedClassics = async () => {
+    await getTheClassics(this.db);
+  }
 }
 
 export default Firebase;
