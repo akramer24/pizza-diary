@@ -13,7 +13,7 @@ const Home = ({ firebase }) => {
       await setUser(userData);
       setLoading(false);
     });
-  });
+  }, [firebase.currentUser]);
 
   return (
     <div id="home">
