@@ -18,6 +18,33 @@ class Firebase {
     return doc.data();
   }
 
+  getPizzeriasToVist = async () => {
+    const currentUser = this.getCurrentUser();
+    const userRef = await this.db.collection('users').doc(currentUser.uid);
+    const user = await userRef.get();
+    return user.data().pizzeriasToVisit;
+  }
+
+  addPizzeriaToVisit = async (pizzeria, cb) => {
+    const pizzeriasToVisit = await this.getPizzeriasToVist();
+    const currentUser = this.getCurrentUser();
+    const userRef = await this.db.collection('users').doc(currentUser.uid);
+    pizzeriasToVisit[pizzeria] = true;
+    await userRef.update({ pizzeriasToVisit });
+    const updatedUser = await userRef.get();
+    cb(updatedUser.data());
+  }
+
+  removePizzeriaToVist = async (pizzeria, cb) => {
+    const pizzeriasToVisit = await this.getPizzeriasToVist();
+    const currentUser = this.getCurrentUser();
+    const userRef = await this.db.collection('users').doc(currentUser.uid);
+    delete pizzeriasToVisit[pizzeria];
+    await userRef.update({ pizzeriasToVisit });
+    const updatedUser = await userRef.get();
+    cb(updatedUser.data());
+  }
+
   getAuthStateChanged = cb =>
     this.auth.onAuthStateChanged(cb);
 
@@ -28,8 +55,8 @@ class Firebase {
       this.db.collection('users').doc(user.uid).set({
         displayName: user.displayName,
         email: user.email,
-        pizzeriasVisited: [],
-        pizzeriasToVisit: []
+        pizzeriasVisited: {},
+        pizzeriasToVisit: {}
       })
     } catch (err) {
       console.log(err);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Header, Auth } from '../index';
+import { Header, Auth, Modal } from '../index';
 import { withFirebase } from '../Firebase';
 import pizzaMan from '../../pizza-man.png';
 
@@ -13,7 +13,7 @@ const Home = ({ firebase }) => {
       await setUser(userData);
       setLoading(false);
     });
-  }, [firebase.currentUser]);
+  }, [firebase.getCurrentUser]);
 
   return (
     <div id="home">

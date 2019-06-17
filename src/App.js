@@ -3,7 +3,10 @@ import { Routes } from './components';
 
 function App() {
   return (
-    <Routes />
+    [
+      <div id="modal-root" key="modal" />,
+      <Routes key="routes" />
+    ]
   );
 }
 

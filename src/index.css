@@ -22,15 +22,29 @@
   background-position: center;
   height: 50vh;
   display: flex;
+  flex-direction: column;
+}
+#header-title-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 #header-title {
   font-family: 'Sacramento', cursive;
   font-size: 50px;
   font-weight: bold;
-  align-self: center;
   color: white;
   width: 100vw;
   text-align: center;
+}
+#header-navbar {
+  display: flex;
+  justify-content: center;
+}
+#header-navbar a {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 #home-bottom {
   height: calc(100vh - 50vh);
@@ -104,6 +118,57 @@
 #map-container {
   height: 100vh;
 }
+.pizzeria-info {
+  display: flex;
+  flex-direction: column;
+}
+.pizzeria-modal {
+  max-width: 400px;
+}
+.modal-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+.modal-overlay {
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  background: rgba(80, 80, 80, 0.4);
+}
+.modal-dialog {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  position: absolute;
+  z-index: 2000;
+  width: 80%;
+  height: 50%;
+  background: white;
+  box-shadow: 0px 0px 5px 1px #6b4e42;
+  border-radius: 10px;
+  padding: 10px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-title {
+  font-size: 24px;
+}
+.modal-x {
+  transition: 0.3s;
+  color: #b1acac;
+}
+.modal-x:hover {
+  background-color: #e4e4e4;
+  border-radius: 10px;
+}
 * {
   box-sizing: border-box;
 }
@@ -115,4 +180,32 @@ body {
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.divider {
+  background-color: #e4e4e4;
+  height: 1px;
+  margin: 5px 0px;
+}
+.add-remove {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add {
+  color: green;
+}
+.add:hover {
+  color: darkgreen;
+}
+.remove {
+  color: red;
+}
+.remove:hover {
+  color: darkred;
+}
+.label {
+  font-weight: bold;
+}
+.flow-down {
+  display: flex;
+  flex-direction: column;
 }

@@ -3,8 +3,10 @@
 @import './components/Home/Home.less';
 @import './components/Input/Input.less';
 @import './components/Map/Map.less';
+@import './components/Modal/Modal.less';
 
 @headerHeight: 50vh;
+@lightGray: #e4e4e4;
 
 * {
   box-sizing: border-box;
@@ -22,4 +24,40 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.divider {
+  background-color: @lightGray;
+  height: 1px;
+  margin: 5px 0px;
+}
+
+.add-remove {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add {
+  color: green;
+  
+  &:hover {
+    color: darkgreen;
+  }
+}
+
+.remove {
+  color: red;
+
+  &:hover {
+    color: darkred;
+  }
+}
+
+.label {
+  font-weight: bold;
+}
+
+.flow-down {
+  display: flex;
+  flex-direction: column;
 }

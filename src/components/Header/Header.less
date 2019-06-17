@@ -4,14 +4,31 @@
   background-position: center;
   height: @headerHeight;
   display: flex;
+  flex-direction: column;
+}
+
+#header-title-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 #header-title {
   font-family: 'Sacramento', cursive;
   font-size: 50px;
   font-weight: bold;
-  align-self: center;
   color: white;
   width: 100vw;
   text-align: center;
+}
+
+#header-navbar {
+  display: flex;
+  justify-content: center;
+
+  a {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
